@@ -2,15 +2,17 @@
 <template>
     <!--Cria o container(card) branco -->
   <lightning-card title="Lista de Contatos" icon-name="standard:contact">
+    <template if:true={contacts.data}>
     <!--
         cria a tabela usando componente SLDS
         atributo data e columns pegam valores do arquivo contactList.js 
     -->  
    <lightning-datatable
     key-field="Id" 
-        data={contact.data}
+        data={contacts.data}
             columns={columns}>
     <p slot="footer">Contatos</p>
    </lightning-datatable> 
+  </template> 
  </lightning-card> 
 </template>
