@@ -14,5 +14,10 @@
     <p slot="footer">Contatos</p>
    </lightning-datatable> 
   </template> 
+
+<!--Referenciando um erro-->  
+<template if:true={errors}>
+    <p>{errors}</p>
+</template>
  </lightning-card> 
 </template>

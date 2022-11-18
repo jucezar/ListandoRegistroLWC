@@ -9,6 +9,8 @@ import EMAIL_FIELD from '@salesforce/schema/Contact.Email';
 // disponiveis devido ao @AuraEnable.
 import getContacts from '@salesforce/apex/ContactController.getContacts';
 
+import { reduceErrors } from 'c/ldsUtils';
+
 // criando um array de objetos onde seus atributos são 'puxados' do import
 const COLUMNS = [
     { label: 'First Name', fieldName: FIRSTNAME_FIELD.fieldApiName, type: 'text' },
@@ -22,4 +24,11 @@ export default class ContactList extends LightningElement {
 columns = COLUMNS; 
 // usado o @wire com a função getContacts o este resultado é armazenado na variável contacts
 @wire(getContacts) contacts;
+
+
+get errors() {
+    return (this.contacts.error) ?
+        reduceErrors(this.contacts.error) : [];
+}
+
 }
